@@ -49,6 +49,10 @@ ReadStream.prototype = {
     var offset = this.view.byteOffset + this.position;
     return this.source.slice(offset, offset + len);
   },
+  'is_root': function() {
+    return (this.view.byteOffset === 0) &&
+      (this.view.byteLength === this.source.byteLength);
+  },
 
   'read_string': function(len) {
     len = len || this.read_ber();
@@ -59,8 +63,7 @@ ReadStream.prototype = {
   'read_signature': function() {
     // check this stream is the root
     assert(this.position === 0);
-    assert(this.byteOffset === 0);
-    assert(this.byteLength === this.source.byteLength);
+    assert(this.is_root());
 
     return this.read_string();
   },
@@ -143,7 +146,7 @@ Array1D.prototype = {
       this.name[sch.name] = elm;
       this.index[idx.toString()] = elm;
 
-      if(stream.eof() && stream.source.byteOffset === 0) { return; }
+      if(stream.is_eof() && stream.is_root()) { return; }
       idx = stream.read_ber();
     }
   },
@@ -223,7 +226,7 @@ function EventCommand(stream) {
 }
 function Event(stream) {
   this.command_list = [];
-  while(!stream.eof()) {
+  while(!stream.is_eof()) {
     this.command_list.push(new EventCommand(stream));
   }
 }
@@ -293,7 +296,7 @@ function read_element(stream, schema) {
     assert(schema_map.hasOwnProperty(schema.type));
     return read_element(stream, schema_map[schema.type]);
   }
-  assert(stream.eof());
+  assert(stream.is_eof());
   return ret;
 }
 
@@ -312,7 +315,7 @@ function Model(bin) {
     });
   } else { this.value = read_element(stream, v); }
 
-  assert(stream.eof());
+  assert(stream.is_eof());
 }
 Model.prototype = {
   'get': function(idx) {
