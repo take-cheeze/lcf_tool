@@ -2,7 +2,7 @@ module.exports =
   {
     'signature': 'LcfDataBase',
     "type": "array1d", "name": "global", "value": [
-     {"index": 11, "type": "array2d", "name": "character", "value": [
+      {"index": 11, "type": "array2d", "name": "character", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "string", "name": "title"},
         {"index": 3, "type": "string", "name": "char_set"},
@@ -38,9 +38,9 @@ module.exports =
         {"index": 61, "type": "integer", "name": "battle_y", "value": 0},
         {"index": 62, "type": "integer", "name": "attackAnime", "value": 0},
         {"index": 63, "type": "array2d", "name": "skill", "value": [
-           {"index": 1, "type": "integer", "name": "level"},
-           {"index": 2, "type": "integer", "name": "skill_id", "value": 1},
-         ]}
+          {"index": 1, "type": "integer", "name": "level"},
+          {"index": 2, "type": "integer", "name": "skill_id", "value": 1},
+        ]},
         {"index": 66, "type": "bool", "name": "useOriginalCommand", "value": false},
         {"index": 67, "type": "string", "name": "originalCommand"},
 
@@ -50,8 +50,8 @@ module.exports =
         {"index": 74, "type": "binary", "name": "attrib_data"},
 
         {"index": 80, "type": "binary", "name": "battle_command"}, // std::array<uint32_t, 6>
-      ]}
-     {"index": 12, "type": "array2d", "name": "skill", "value": [
+      ]},
+      {"index": 12, "type": "array2d", "name": "skill", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "string", "name": "comment"},
         {"index": 3, "type": "string", "name": "message_l1"},
@@ -87,8 +87,8 @@ module.exports =
         {"index": 43, "type": "integer", "name": "attrib_data_num", "value": 0},
         {"index": 44, "type": "binary", "name": "attrib_data"}, // std::vector<uint8_t> (as bool)
         {"index": 45, "type": "bool", "name": "change_attrib"},
-      ]}
-     {"index": 13, "type": "array2d", "name": "item", "value": [
+      ]},
+      {"index": 13, "type": "array2d", "name": "item", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "string", "name": "comment"},
         {"index": 3, "type": "integer", "name": "type", "value": 0},
@@ -153,8 +153,8 @@ module.exports =
         {"index": 71, "type": "bool", "name": "use_skill_as_item", "value": false},
         {"index": 72, "type": "integer", "name": "job_data_num", "value": 0},
         {"index": 73, "type": "binary", "name": "job_data"},
-      ]}
-     {"index": 14, "type": "array2d", "name": "enemy", "value": [
+      ]},
+      {"index": 14, "type": "array2d", "name": "enemy", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "string", "name": "monster"},
         {"index": 3, "type": "integer", "name": "hue", "value": 0},
@@ -182,36 +182,36 @@ module.exports =
         {"index": 34, "type": "binary", "name": "attrib_data"},
 
         {"index": 42, "type": "array2d", "name": "action_pattern", "value": [
-           {"index": 1, "type": "integer", "name": "action_type"},
-           {"index": 2, "type": "integer", "name": "basic_action", "value": 1},
-           {"index": 3, "type": "integer", "name": "skill_id", "value": 1},
-           {"index": 4, "type": "integer", "name": "enemy_id", "value": 1},
-           {"index": 5, "type": "integer", "name": "action_term", "value": 0},
-           {"index": 6, "type": "integer", "name": "a", "value": 0},
-           {"index": 7, "type": "integer", "name": "b", "value": 0},
-           {"index": 8, "type": "integer", "name": "switch_id", "value": 1},
-           {"index": 9, "type": "bool", "name": "on_after_action", "value": false},
-           {"index": 10, "type": "integer", "name": "on_switch_id", "value": 1},
-           {"index": 11, "type": "bool", "name": "off_after_action", "value": false},
-           {"index": 12, "type": "integer", "name": "off_switch_id", "value": 1},
-           {"index": 13, "type": "integer", "name": "priority", "value": 50},
-         ]}
-      ]}
-     {"index": 15, "type": "array2d", "name": "enemy_group", "value": [
+          {"index": 1, "type": "integer", "name": "action_type"},
+          {"index": 2, "type": "integer", "name": "basic_action", "value": 1},
+          {"index": 3, "type": "integer", "name": "skill_id", "value": 1},
+          {"index": 4, "type": "integer", "name": "enemy_id", "value": 1},
+          {"index": 5, "type": "integer", "name": "action_term", "value": 0},
+          {"index": 6, "type": "integer", "name": "a", "value": 0},
+          {"index": 7, "type": "integer", "name": "b", "value": 0},
+          {"index": 8, "type": "integer", "name": "switch_id", "value": 1},
+          {"index": 9, "type": "bool", "name": "on_after_action", "value": false},
+          {"index": 10, "type": "integer", "name": "on_switch_id", "value": 1},
+          {"index": 11, "type": "bool", "name": "off_after_action", "value": false},
+          {"index": 12, "type": "integer", "name": "off_switch_id", "value": 1},
+          {"index": 13, "type": "integer", "name": "priority", "value": 50},
+        ]},
+      ]},
+      {"index": 15, "type": "array2d", "name": "enemy_group", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "array2d", "name": "enemy_enum", "value": [
-           {"index": 1, "type": "integer", "name": "enemy_id", "value": 1},
-           {"index": 2, "type": "integer", "name": "x", "value": 0},
-           {"index": 3, "type": "integer", "name": "y", "value": 0},
-           {"index": 4, "type": "bool", "name": "invisible", "value": false},
-         ]}
+          {"index": 1, "type": "integer", "name": "enemy_id", "value": 1},
+          {"index": 2, "type": "integer", "name": "x", "value": 0},
+          {"index": 3, "type": "integer", "name": "y", "value": 0},
+          {"index": 4, "type": "bool", "name": "invisible", "value": false},
+        ]},
         {"index": 4, "type": "integer", "name": "terrain_data_num"},
         {"index": 5, "type": "binary", "name": "terrain_data"},
 
         {"index": 11, "type": "array2d", "name": "battle_event", "value": [
-           {"index": 2, "type": "array1d", "name": "term", "value": [
-              {"index": 1, "type": "integer", "name": "flag", "value": 0},
-              /*
+          {"index": 2, "type": "array1d", "name": "term", "value": [
+            {"index": 1, "type": "integer", "name": "flag", "value": 0},
+            /*
                [bit]
                [0]: switch_1
                [1]: switch_2
@@ -241,12 +241,12 @@ module.exports =
               {"index": 13, "type": "integer", "name": "char_id", "value": 1},
               {"index": 14, "type": "integer", "name": "char_hp_from", "value": 0},
               {"index": 15, "type": "integer", "name": "char_hp_to", "value": 100},
-            ]}
+            ]},
 
            {"index": 11, "type": "integer", "name": "event_length", "value": 0},
            {"index": 12, "type": "event", "name": "event"},
-         ]}
-      ]}
+         ]},
+      ]},
      {"index": 16, "type": "array2d", "name": "terrain", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "integer", "name": "damage", "value": 0},
@@ -285,7 +285,7 @@ module.exports =
         {"index": 46, "type": "integer", "name": "grid_a"},
         {"index": 47, "type": "integer", "name": "grid_b"},
         {"index": 48, "type": "integer", "name": "grid_c"},
-      ]}
+      ]},
      {"index": 17, "type": "array2d", "name": "attribute", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "integer", "name": "type", "value": 0},
@@ -295,7 +295,7 @@ module.exports =
         {"index": 13, "type": "integer", "name": "rate_c", "value": 100},
         {"index": 14, "type": "integer", "name": "rate_d", "value": 50},
         {"index": 15, "type": "integer", "name": "rate_e", "value": 0},
-      ]}
+      ]},
      {"index": 18, "type": "array2d", "name": "condition", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "integer", "name": "type", "value": 0},
@@ -338,7 +338,7 @@ module.exports =
         {"index": 66, "type": "integer", "name": "turn_mp_rate", "value": 0},
         {"index": 67, "type": "integer", "name": "field_mp_step", "value": 0},
         {"index": 68, "type": "integer", "name": "field_mp_amount", "value": 0},
-      ]}
+      ]},
      {"index": 19, "type": "array2d", "name": "battle_anime", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "string", "name": "battle"},
@@ -350,7 +350,7 @@ module.exports =
            {"index": 5, "type": "integer", "name": "green", "value": 31},
            {"index": 6, "type": "integer", "name": "blue", "value": 31},
            {"index": 7, "type": "integer", "name": "flash", "value": 31},
-         ]}
+         ]},
         {"index": 9, "type": "integer", "name": "range", "value": 0},
         {"index": 10, "type": "integer", "name": "y_base", "value": 0},
         {"index": 11, "type": "integer", "name": "use_grid", "value": 0},
@@ -366,9 +366,9 @@ module.exports =
               {"index": 8, "type": "integer", "name": "blue", "value": 100},
               {"index": 9, "type": "integer", "name": "chroma", "value": 100},
               {"index": 10, "type": "integer", "name": "transparency", "value": 0},
-            ]}
-         ]}
-      ]}
+            ]},
+         ]},
+      ]},
      {"index": 20, "type": "array2d", "name": "chip_set", "value": [
         {"index": 1, "type": "string", "name": "name"},
         {"index": 2, "type": "string", "name": "chip_set"},
@@ -378,7 +378,7 @@ module.exports =
 
         {"index": 11, "type": "integer", "name": "ocean_sequence", "value": 0},
         {"index": 12, "type": "integer", "name": "ocean_speed", "value": 0},
-      ]}
+      ]},
      {"index": 21, "type": "array1d", "name": "vocabulary", "value": [
         {"index": 1, "type": "string", "name": "battle_start"},
         {"index": 2, "type": "string", "name": "first_strike"},
@@ -514,7 +514,7 @@ module.exports =
         {"index": 151, "type": "string", "name": "remindDiscarding"},
         {"index": 152, "type": "string", "name": "yes"},
         {"index": 153, "type": "string", "name": "no"},
-      ]}
+      ]},
      {"index": 22, "type": "array1d", "name": "system", "value": [
         {"index": 10, "type": "integer", "name": "version", "value": 2000},
 
@@ -572,7 +572,7 @@ module.exports =
         {"index": 83, "type": "integer", "name": "dummy"},
         {"index": 84, "type": "string", "name": "defBackdrop"},
         {"index": 85, "type": "array2d", "name": "dummy", "value": [
-                        /*
+          /*
            {"index": 1, "type": "integer", "name": "dummy"},
            {"index": 2, "type": "integer", "name": "dummy"},
 
@@ -581,143 +581,144 @@ module.exports =
            {"index": 13, "type": "integer", "name": "dummy"},
            {"index": 14, "type": "integer", "name": "dummy"},
            {"index": 15, "type": "integer", "name": "dummy"},
-*/
-                    ]}
+           */
+        ]},
 
-                {"index": 91, "type": "integer", "name": "saveTime"},
-            ]}
-        {"index": 23, "type": "array2d", "name": "Switch", "value": [
-                {"index": 1, "type": "string", "name": "name"},
-            ]}
-        {"index": 24, "type": "array2d", "name": "Variable", "value": [
-                {"index": 1, "type": "string", "name": "name"},
-            ]}
-        {"index": 25, "type": "array2d", "name": "common_event", "value": [
-                {"index": 1, "type": "string", "name": "name"},
+       {"index": 91, "type": "integer", "name": "saveTime"},
+     ]},
+      {"index": 23, "type": "array2d", "name": "Switch", "value": [
+        {"index": 1, "type": "string", "name": "name"},
+      ]},
+      {"index": 24, "type": "array2d", "name": "Variable", "value": [
+        {"index": 1, "type": "string", "name": "name"},
+      ]},
+      {"index": 25, "type": "array2d", "name": "common_event", "value": [
+        {"index": 1, "type": "string", "name": "name"},
 
-                {"index": 11, "type": "integer", "name": "start_type", "value": 5},
-                {"index": 12, "type": "bool", "name": "needSwitch", "value": false},
-                {"index": 13, "type": "integer", "name": "switch_id", "value": 1},
+        {"index": 11, "type": "integer", "name": "start_type", "value": 5},
+        {"index": 12, "type": "bool", "name": "needSwitch", "value": false},
+        {"index": 13, "type": "integer", "name": "switch_id", "value": 1},
 
-                {"index": 21, "type": "integer", "name": "event_length"},
-                {"index": 22, "type": "event", "name": "event"},
-            ]}
-        {"index": 26, "type": "array2d", "name": "common_event_2", "value": [
-                {"index": 1, "type": "string", "name": "name"},
+        {"index": 21, "type": "integer", "name": "event_length"},
+        {"index": 22, "type": "event", "name": "event"},
+      ]},
+      {"index": 26, "type": "array2d", "name": "common_event_2", "value": [
+        {"index": 1, "type": "string", "name": "name"},
 
-                {"index": 11, "type": "integer", "name": "start_type", "value": 5},
-                {"index": 12, "type": "bool", "name": "needSwitch", "value": false},
-                {"index": 13, "type": "integer", "name": "switch_id", "value": 1},
+        {"index": 11, "type": "integer", "name": "start_type", "value": 5},
+        {"index": 12, "type": "bool", "name": "needSwitch", "value": false},
+        {"index": 13, "type": "integer", "name": "switch_id", "value": 1},
 
-                {"index": 21, "type": "integer", "name": "event_length"},
-                {"index": 22, "type": "event", "name": "event"},
-            ]}
-        {"index": 27, "type": "array2d", "name": "common_event_3", "value": [
-                {"index": 1, "type": "string", "name": "name"},
+        {"index": 21, "type": "integer", "name": "event_length"},
+        {"index": 22, "type": "event", "name": "event"},
+      ]},
+      {"index": 27, "type": "array2d", "name": "common_event_3", "value": [
+        {"index": 1, "type": "string", "name": "name"},
 
-                {"index": 11, "type": "integer", "name": "start_type", "value": 5},
-                {"index": 12, "type": "bool", "name": "needSwitch", "value": false},
-                {"index": 13, "type": "integer", "name": "switch_id", "value": 1},
+        {"index": 11, "type": "integer", "name": "start_type", "value": 5},
+        {"index": 12, "type": "bool", "name": "needSwitch", "value": false},
+        {"index": 13, "type": "integer", "name": "switch_id", "value": 1},
 
-                {"index": 21, "type": "integer", "name": "event_length"},
-                {"index": 22, "type": "event", "name": "event"},
-            ]}
-        {"index": 28, "type": "array2d", "name": "common_event_4", "value": [
-                {"index": 1, "type": "string", "name": "name"},
+        {"index": 21, "type": "integer", "name": "event_length"},
+        {"index": 22, "type": "event", "name": "event"},
+      ]},
+      {"index": 28, "type": "array2d", "name": "common_event_4", "value": [
+        {"index": 1, "type": "string", "name": "name"},
 
-                {"index": 11, "type": "integer", "name": "start_type", "value": 5},
-                {"index": 12, "type": "bool", "name": "needSwitch", "value": false},
-                {"index": 13, "type": "integer", "name": "switch_id", "value": 1},
+        {"index": 11, "type": "integer", "name": "start_type", "value": 5},
+        {"index": 12, "type": "bool", "name": "needSwitch", "value": false},
+        {"index": 13, "type": "integer", "name": "switch_id", "value": 1},
 
-                {"index": 21, "type": "integer", "name": "event_length"},
-                {"index": 22, "type": "event", "name": "event"},
-            ]}
-        {"index": 29, "type": "array2d", "name": "battle_command", "value": [
-                {"index": 1, "type": "string", "name": "name"},
-                {"index": 2, "type": "integer", "name": "type"},
-            ]}
-        {"index": 30, "type": "array2d", "name": "class_1", "value": [
-                {"index": 1, "type": "string", "name": "name"},
+        {"index": 21, "type": "integer", "name": "event_length"},
+        {"index": 22, "type": "event", "name": "event"},
+      ]},
+      {"index": 29, "type": "array2d", "name": "battle_command", "value": [
+        {"index": 1, "type": "string", "name": "name"},
+        {"index": 2, "type": "integer", "name": "type"},
+      ]},
+      {"index": 30, "type": "array2d", "name": "class_1", "value": [
+        {"index": 1, "type": "string", "name": "name"},
 
-                {"index": 21, "type": "bool", "name": "double_hand", "value": false},
-                {"index": 22, "type": "bool", "name": "fixed_equipment", "value": false},
-                {"index": 23, "type": "bool", "name": "forced_ai_action"},
-                {"index": 24, "type": "bool", "name": "strong_defence"},
+        {"index": 21, "type": "bool", "name": "double_hand", "value": false},
+        {"index": 22, "type": "bool", "name": "fixed_equipment", "value": false},
+        {"index": 23, "type": "bool", "name": "forced_ai_action"},
+        {"index": 24, "type": "bool", "name": "strong_defence"},
 
-                {"index": 31, "type": "binary", "name": "parameter"}, // std::array<std::array<uint16_t, 6>, max_level>
+        {"index": 31, "type": "binary", "name": "parameter"}, // std::array<std::array<uint16_t, 6>, max_level>
 
-                {"index": 41, "type": "integer", "name": "exp_basic"},
-                {"index": 42, "type": "integer", "name": "exp_increase"},
-                {"index": 43, "type": "integer", "name": "exp_correction", "value": 0},
+        {"index": 41, "type": "integer", "name": "exp_basic"},
+        {"index": 42, "type": "integer", "name": "exp_increase"},
+        {"index": 43, "type": "integer", "name": "exp_correction", "value": 0},
 
-                {"index": 51, "type": "binary", "name": "equipment"}, // std::array<uint16_t, 5>
+        {"index": 51, "type": "binary", "name": "equipment"}, // std::array<uint16_t, 5>
 
-                {"index": 56, "type": "integer", "name": "unarmed_attack", "value": 1}, // battle anime id
+        {"index": 56, "type": "integer", "name": "unarmed_attack", "value": 1}, // battle anime id
 
-                {"index": 62, "type": "integer", "name": "attack_anime", "value": 0},
-                {"index": 63, "type": "array2d", "name": "skill", "value": [
-                        {"index": 1, "type": "integer", "name": "level"},
-                        {"index": 2, "type": "integer", "name": "skill_id", "value": 1},
-                    ]}
-                {"index": 66, "type": "bool", "name": "useOriginalCommand", "value": false},
-                {"index": 67, "type": "string", "name": "originalCommand"},
+        {"index": 62, "type": "integer", "name": "attack_anime", "value": 0},
+        {"index": 63, "type": "array2d", "name": "skill", "value": [
+          {"index": 1, "type": "integer", "name": "level"},
+          {"index": 2, "type": "integer", "name": "skill_id", "value": 1},
+        ]},
+        {"index": 66, "type": "bool", "name": "useOriginalCommand", "value": false},
+        {"index": 67, "type": "string", "name": "originalCommand"},
 
-                {"index": 71, "type": "integer", "name": "condition_data_num", "value": 0},
-                {"index": 72, "type": "binary", "name": "condition_data"},
-                {"index": 73, "type": "integer", "name": "attrib_data_num", "value": 0},
-                {"index": 74, "type": "binary", "name": "attrib_data"},
+        {"index": 71, "type": "integer", "name": "condition_data_num", "value": 0},
+        {"index": 72, "type": "binary", "name": "condition_data"},
+        {"index": 73, "type": "integer", "name": "attrib_data_num", "value": 0},
+        {"index": 74, "type": "binary", "name": "attrib_data"},
 
-                {"index": 80, "type": "binary", "name": "battle_command"}, // std::array<uint32_t, 6>
-            ]}
-        {"index": 31, "type": "array2d", "name": "class_2", "value": [
-                {"index": 1, "type": "string", "name": "name"},
+        {"index": 80, "type": "binary", "name": "battle_command"}, // std::array<uint32_t, 6>
+      ]},
+      {"index": 31, "type": "array2d", "name": "class_2", "value": [
+        {"index": 1, "type": "string", "name": "name"},
 
-                {"index": 21, "type": "bool", "name": "double_hand", "value": false},
-                {"index": 22, "type": "bool", "name": "fixed_equipment", "value": false},
-                {"index": 23, "type": "bool", "name": "forced_ai_action"},
-                {"index": 24, "type": "bool", "name": "strong_defence"},
+        {"index": 21, "type": "bool", "name": "double_hand", "value": false},
+        {"index": 22, "type": "bool", "name": "fixed_equipment", "value": false},
+        {"index": 23, "type": "bool", "name": "forced_ai_action"},
+        {"index": 24, "type": "bool", "name": "strong_defence"},
 
-                {"index": 31, "type": "binary", "name": "parameter"}, // std::array<std::array<uint16_t, 6>, max_level>
+        {"index": 31, "type": "binary", "name": "parameter"}, // std::array<std::array<uint16_t, 6>, max_level>
 
-                {"index": 41, "type": "integer", "name": "exp_basic"},
-                {"index": 42, "type": "integer", "name": "exp_increase"},
-                {"index": 43, "type": "integer", "name": "exp_correction", "value": 0},
+        {"index": 41, "type": "integer", "name": "exp_basic"},
+        {"index": 42, "type": "integer", "name": "exp_increase"},
+        {"index": 43, "type": "integer", "name": "exp_correction", "value": 0},
 
-                {"index": 51, "type": "binary", "name": "equipment"} // std::array<uint16_t, 5>
+        {"index": 51, "type": "binary", "name": "equipment"}, // std::array<uint16_t, 5>
 
-                {"index": 56, "type": "integer", "name": "unarmed_attack", "value": 1}, // battle anime id
+        {"index": 56, "type": "integer", "name": "unarmed_attack", "value": 1}, // battle anime id
 
-                {"index": 62, "type": "integer", "name": "attack_anime", "value": 0},
-                {"index": 63, "type": "array2d", "name": "skill", "value": [
-                        {"index": 1, "type": "integer", "name": "level"},
-                        {"index": 2, "type": "integer", "name": "skill_id", "value": 1},
-                    ]}
-                {"index": 66, "type": "bool", "name": "useOriginalCommand", "value": false},
-                {"index": 67, "type": "string", "name": "originalCommand"},
+        {"index": 62, "type": "integer", "name": "attack_anime", "value": 0},
+        {"index": 63, "type": "array2d", "name": "skill", "value": [
+          {"index": 1, "type": "integer", "name": "level"},
+          {"index": 2, "type": "integer", "name": "skill_id", "value": 1},
+        ]},
+        {"index": 66, "type": "bool", "name": "useOriginalCommand", "value": false},
+        {"index": 67, "type": "string", "name": "originalCommand"},
 
-                {"index": 71, "type": "integer", "name": "condition_data_num", "value": 0},
-                {"index": 72, "type": "binary", "name": "condition_data"},
-                {"index": 73, "type": "integer", "name": "attrib_data_num", "value": 0},
-                {"index": 74, "type": "binary", "name": "attrib_data"},
+        {"index": 71, "type": "integer", "name": "condition_data_num", "value": 0},
+        {"index": 72, "type": "binary", "name": "condition_data"},
+        {"index": 73, "type": "integer", "name": "attrib_data_num", "value": 0},
+        {"index": 74, "type": "binary", "name": "attrib_data"},
 
-                {"index": 80, "type": "binary", "name": "battle_command"}, // std::array<uint32_t, 6>
-            ]}
-        {"index": 32, "type": "array2d", "name": "battle_anime2", "value": [
-                {"index": 1, "type": "string", "name": "name"},
-                {"index": 2, "type": "integer", "name": "attack_motion"},
+        {"index": 80, "type": "binary", "name": "battle_command"}, // std::array<uint32_t, 6>
+      ]},
+      {"index": 32, "type": "array2d", "name": "battle_anime2", "value": [
+        {"index": 1, "type": "string", "name": "name"},
+        {"index": 2, "type": "integer", "name": "attack_motion"},
 
-                "       {"index": 11, "type": "array2d", "name": "basic", "value": ["
-                {"index": 1, "type": "string", "name": "name"},
-                {"index": 2, "type": "string", "name": "battle"},
-                {"index": 3, "type": "integer", "name": "battle_pos"},
-                {"index": 4, "type": "bool", "name": "use_extended_animation"},
-                {"index": 5, "type": "integer", "name": "extended_animation_id"},
-            ]}
+        {"index": 11, "type": "array2d", "name": "basic", "value": [
+          {"index": 1, "type": "string", "name": "name"},
+          {"index": 2, "type": "string", "name": "battle"},
+          {"index": 3, "type": "integer", "name": "battle_pos"},
+          {"index": 4, "type": "bool", "name": "use_extended_animation"},
+          {"index": 5, "type": "integer", "name": "extended_animation_id"},
+        ]},
         {"index": 12, "type": "array2d", "name": "weapon", "value": [
-                {"index": 1, "type": "string", "name": "name"},
-                {"index": 2, "type": "string", "name": "file"},
-                {"index": 3, "type": "integer", "name": "index"},
-                {"index": 4, "type": "bool", "name": "use_extended_animation"},
-                {"index": 5, "type": "integer", "name": "extended_animation_id"},
-            ]}
+          {"index": 1, "type": "string", "name": "name"},
+          {"index": 2, "type": "string", "name": "file"},
+          {"index": 3, "type": "integer", "name": "index"},
+          {"index": 4, "type": "bool", "name": "use_extended_animation"},
+          {"index": 5, "type": "integer", "name": "extended_animation_id"},
+        ]},
+      ]}
     ]};

@@ -1,6 +1,7 @@
-
 var schema_map = {};
-var signature_map = {}
+var signature_map = {};
+
+var Converter = null;
 
 var schema_list = [
   'lcf_database', 'lcf_save_data', 'lcf_map_unit',
@@ -15,22 +16,22 @@ schema_list.forEach(function(v) {
 });
 
 function ReadStream(bin, offset, length) {
-  assert(bin instanceof ArrayBuffer);
+  console.assert(bin instanceof ArrayBuffer);
 
   this.position = 0;
   this.source = bin;
   this.length = bin.byteLength;
   this.view = offset && length?
-    DataView(bin, offset, length) : DataView(bin);
+    new DataView(bin, offset, length) : new DataView(bin);
 }
 
 ReadStream.prototype = {
   'read_octed': function() {
-    assert(!is_eof());
+    console.assert(!this.is_eof());
     return this.view.getUint8(this.position++);
   },
   'read_float': function() {
-    assert(!is_eof());
+    console.assert(!this.is_eof());
     var ret = this.view.getFloat64(this.position, true);
     this.position += 64 / 8;
     return ret;
@@ -56,14 +57,36 @@ ReadStream.prototype = {
 
   'read_string': function(len) {
     len = len || this.read_ber();
-    var ret = Encoding.convert(this.slice(len), 'UTF8', 'SJIS');
+
+    function arraybuffer2buffer(buf) {
+      console.assert(Buffer.isBuffer(buf));
+
+      var ret = new Buffer(buf.length);
+      var ary = new Uint8Array(ret);
+      for(var i = 0; i < buf.length; ++i) {
+        ret[i] = ary[i]
+      }
+      return ret;
+    }
+
+    var ret;
+    if(Buffer && __filename && __dirname) {
+      if(!Converter) {
+        var Iconv = require('iconv').Iconv;
+        Converter = new Iconv('shift_jis', 'UTF-8//TRANSLIT//IGNORE');
+      }
+      ret = Converter.convert(arraybuffer2buffer(this.slice(len))).toString('utf-8');
+    } else {
+      ret = Encoding.convert(this.slice(len), 'UTF8', 'SJIS');
+    }
+
     this.position += len;
     return ret;
   },
   'read_signature': function() {
     // check this stream is the root
-    assert(this.position === 0);
-    assert(this.is_root());
+    console.assert(this.position === 0);
+    console.assert(this.is_root());
 
     return this.read_string();
   },
@@ -80,13 +103,13 @@ ReadStream.prototype = {
 // define read_uint16, read_uint32, read_int16, read_int32
 [16, 32].forEach(function(v) {
   ReadStream.prototype['read_uint' + v] = function() {
-    assert(!is_eof());
+    console.assert(!is_eof());
     var ret = this.view['getUint' + v](this.position, true);
     this.position += v / 8;
     return ret;
   };
   ReadStream.prototype['read_int' + v] = function() {
-    assert(!is_eof());
+    console.assert(!is_eof());
     var ret = this.view['getInt' + v](this.position, true);
     this.position += v / 8;
     return ret;
@@ -94,15 +117,15 @@ ReadStream.prototype = {
 });
 
 function DefineMap(ary) {
-  assert(ary instanceof Array);
+  console.assert(ary instanceof Array);
 
   this.index = {};
   this.name = {};
   ary.forEach(function(v) {
-    assert(typeof v.index === 'number');
-    assert(typeof v.name === 'string');
-    assert(!this.index.hasOwnProperty(v.index.toString()));
-    assert(!this.name.hasOwnProperty(v.name));
+    console.assert(typeof v.index === 'number');
+    console.assert(typeof v.name === 'string');
+    console.assert(!this.index.hasOwnProperty(v.index.toString()));
+    console.assert(!this.name.hasOwnProperty(v.name));
 
     this.index[v.index.toString()] = v;
     this.name[v.name] = v;
@@ -112,14 +135,14 @@ DefineMap.prototype = {
   'get': function(idx) {
     switch(typeof idx) {
       case 'string':
-      assert(this.name.hasOwnProperty(idx));
+      console.assert(this.name.hasOwnProperty(idx));
       return this.name[idx];
 
       case 'number':
-      assert(this.index.hasOwnProperty(idx.toString()));
+      console.assert(this.index.hasOwnProperty(idx.toString()));
       return this.index[idx.toString()];
 
-      default: assert(false);
+      default: console.assert(false);
     }
   },
 };
@@ -175,7 +198,7 @@ Array1D.prototype = {
         return ret;
       }
 
-      default: assert(false);
+      default: console.assert(false);
     }
   },
 };
@@ -200,8 +223,8 @@ Array2D.prototype = {
   },
 
   'get': function(idx) {
-    assert(typeof idx === 'string');
-    assert(this.index.hasOwnProperty(idx.toString()));
+    console.assert(typeof idx === 'string');
+    console.assert(this.index.hasOwnProperty(idx.toString()));
     return this.index[idx.toString()];
   },
 };
@@ -236,11 +259,11 @@ function create_element(schema) {
     case 'integer':
     case 'string':
     case 'bool':
-    assert(schema.hasOwnProperty('value'));
+    console.assert(schema.hasOwnProperty('value'));
     return schema.value;
 
     default:
-    assert(schema_map.hasOwnProperty(schema.type));
+    console.assert(schema_map.hasOwnProperty(schema.type));
     return create_element(schema_map[schema.type]);
 
     case 'ber_enum': return [];
@@ -263,7 +286,7 @@ function read_element(stream, schema) {
 
     case 'bool':
     ret = stream.read_ber();
-    assert(ret === 0 || ret === 1);
+    console.assert(ret === 0 || ret === 1);
     ret = ret? true : false;
     break;
 
@@ -281,6 +304,8 @@ function read_element(stream, schema) {
     for(var i = 0; i <= ber_enum_size; ++i) {
       ret.push(stream.read_ber());
     }
+    if(stream.is_root()) { return ret; }
+    break;
 
     case 'array1d':
     ret = new Array1D(schema);
@@ -290,22 +315,23 @@ function read_element(stream, schema) {
     case 'array2d':
     ret = new Array2D(schema);
     ret.load_stream(stream);
+    if(stream.is_root()) { return ret; }
     break;
 
     default:
-    assert(schema_map.hasOwnProperty(schema.type));
+    console.assert(schema_map.hasOwnProperty(schema.type));
     return read_element(stream, schema_map[schema.type]);
   }
-  assert(stream.is_eof());
+  console.assert(stream.is_eof());
   return ret;
 }
 
 function Model(bin) {
-  var stream = new ReadStream(bind);
+  var stream = new ReadStream(bin);
   this.source = bin;
 
   this.signature = stream.read_signature();
-  assert(signature_map.hasOwnProperty(this.signature));
+  console.assert(signature_map.hasOwnProperty(this.signature));
   this.schema = signature_map[this.signature];
 
   if(this.schema instanceof Array) {
@@ -315,26 +341,26 @@ function Model(bin) {
     });
   } else { this.value = read_element(stream, v); }
 
-  assert(stream.is_eof());
+  console.assert(stream.is_eof());
 }
 Model.prototype = {
   'get': function(idx) {
     if(this.schema instanceof Array) {
-      assert(typeof idx === 'number');
-      assert(idx < this.schema.length);
+      console.assert(typeof idx === 'number');
+      console.assert(idx < this.schema.length);
       return this.value[idx];
     } else switch(typeof idx) {
       case 'string':
-      assert(this.name.hasOwnProperty(v.name));
+      console.assert(this.name.hasOwnProperty(v.name));
       return this.name[idx];
 
       case 'number':
-      assert(this.index.hasOwnProperty(v.index.toString()));
+      console.assert(this.index.hasOwnProperty(v.index.toString()));
       return this.index[idx.toString()];
 
-      default: assert(false);
+      default: console.assert(false);
     }
   },
 };
 
-require('./test');
+module.exports.Model = Model;
